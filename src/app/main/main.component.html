@@ -1,0 +1,35 @@
+<div class="top">
+  <div class="text-center center">
+    <h1>Генератор рукописного текста</h1>
+    <p>Загрузи текст. Выбери фон. Получи свой конспект.</p>
+  </div>
+  <div class="delimiter">
+    <img class="down-image" src="assets/down.png" (click)="scrollTo(target)">
+    <img class="delimiter-img" src="assets/delim.png">
+  </div>
+</div>
+<div #target style="height: 100%;background: black">
+  <div class="bottom-content">
+    <div>
+      <h1>Примеры наших работ</h1>
+    </div>
+    <mat-grid-list cols="3" [gutterSize]="gutterSize" [rowHeight]="rowHeight" style="margin-top: 4rem" *ngIf="!isMobile">
+      <ng-container *ngFor="let image of images">
+        <mat-grid-tile>
+          <div class="rama">
+            <img class="example" [src]="image">
+          </div>
+        </mat-grid-tile>
+      </ng-container>
+    </mat-grid-list>
+    <!--    -->
+    <div style="border: 0.1rem solid white;padding: 1rem" id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" *ngIf="isMobile">
+      <div class="carousel-inner">
+        <div class="carousel-item active" *ngFor="let image of images">
+          <img class="example" [src]="image">
+        </div>
+      </div>
+    </div>
+    <button class="try-free">Попробуй бесплатно</button>
+  </div>
+</div>
