@@ -15,14 +15,14 @@ export class HttpService {
     'Authorization':'Basic dGV4dC13cml0ZXI6a29uc3Bla3Qtc2VjcmV0'
   });
   tokenOptions={headers:this.getAccesTokenByPasswordHeaders};
-  // private tokenURL:string="http://localhost:8080/oauth/token";
-  // private registerURL:string="http://localhost:8080/register/";
-  // private baseURL:string="http://localhost:8080/api";
-  // private uploadURL:string="http://localhost:8080/attach";
-  private tokenURL:string="http://trelloiii.site/oauth/token";
-  private registerURL:string="http://trelloiii.site/register/";
-  private baseURL:string="http://trelloiii.site/api";
-  private uploadURL:string="http://trelloiii.site/attach";
+  private tokenURL:string="http://localhost:8080/oauth/token";
+  private registerURL:string="http://localhost:8080/register/";
+  private baseURL:string="http://localhost:8080/api";
+  private uploadURL:string="http://localhost:8080/attach";
+  // private tokenURL:string="http://trelloiii.site/oauth/token";
+  // private registerURL:string="http://trelloiii.site/register/";
+  // private baseURL:string="http://trelloiii.site/api";
+  // private uploadURL:string="http://trelloiii.site/attach";
 
   public getOAuth2Token(data){
     return this.http.post(this.tokenURL,data,this.tokenOptions);

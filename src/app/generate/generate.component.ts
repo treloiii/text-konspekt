@@ -128,7 +128,12 @@ export class GenerateComponent implements OnInit {
 
   async generate(genForm: NgForm) {
     console.log(genForm.form);
-    let res=await this.http.generate(genForm.form.value,this.user.id);
+    let data:FormData=new FormData();
+    this.labels.forEach((label)=>{
+      data.append(label.name,genForm.value[label.name]);
+    });
+    let res=await this.http.generate(data,this.user.id);
+
     // this.result=res;
     this.result=res?.map(url=>{
       return "http://"+url;
