@@ -26,13 +26,16 @@ export class LoginComponent implements OnInit {
     data.append("password",password);
     data.append("grant_type","password");
     this.security.saveAccessToken(data).then(
-      resolve=>{this.status=""},
+      resolve=>{
+        this.status=""
+        localStorage.setItem("email",email)
+      },
       reject=>{
         if(reject==400){
           this.status="Неверный логин или пароль"
         }
         else{
-          this.status="Неизвестная ошибка:("
+          this.status="Неверный логин или пароль"
           console.log("unknown")
         }
       }

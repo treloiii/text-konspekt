@@ -16,6 +16,7 @@ body {
 button{
   background: black;
   border: none;
+  color: white;
 }
 button:hover{
   background: white;
@@ -41,4 +42,13 @@ button:hover{
 }
 input{
   margin-bottom: 1rem;
+}
+.success{
+  font-size: 22px;
+  color: darkred;
+  margin-top: 20rem;
+}
+.err{
+  font-size: 16px;
+  color: darkred;
 }

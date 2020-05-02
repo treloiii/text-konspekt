@@ -1,7 +1,14 @@
-<form class="form-signin text-center">
-  <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
-  <input type="email" id="inputEmail" class="form-control" placeholder="Почта" required autofocus>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
-  <input type="text" id="nickname" class="form-control" placeholder="Имя" required>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
-</form>
+<app-navbar></app-navbar>
+<ng-container *ngIf="!isFormSend">
+  <form #regForm="ngForm" class="form-signin text-center">
+    <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+    <input ngModel name="email" type="email" id="inputEmail" class="form-control" placeholder="Почта" required autofocus>
+    <input ngModel name="password" type="password" id="inputPassword" class="form-control" placeholder="Пароль" required>
+    <input ngModel name="nickname" type="text" id="nickname" class="form-control" placeholder="Имя" required>
+    <p class="err">{{error}}</p>
+    <button class="btn btn-lg btn-block" type="submit" (click)="register(regForm)">Зарегистрироваться</button>
+  </form>
+</ng-container>
+<div class="text-center success" *ngIf="isFormSend">
+  <p>{{success}}</p>
+</div>

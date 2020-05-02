@@ -12,8 +12,10 @@ import { LoginComponent } from './login/login.component';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import { SignupComponent } from './signup/signup.component';
 import { GenerateComponent } from './generate/generate.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {ApiInterceptor} from './api.interceptor';
+import {RefreshInterceptor} from './refresh.interceptor';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,18 @@ import {FormsModule} from '@angular/forms';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:ApiInterceptor,
+      multi:true
+    },
+    {
+      provide:HTTP_INTERCEPTORS,
+      useClass:RefreshInterceptor,
+      multi:true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

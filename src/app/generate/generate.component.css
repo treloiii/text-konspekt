@@ -1,0 +1,48 @@
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+}
+.fg{
+  width: 50%;
+  margin-left: 25%;
+}
+.center{
+  margin: 0 auto;
+  width: 50%;
+}
+label{
+  font-size: 18px;
+}
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  padding: 8px 20px;
+}
+.btn:hover {
+  border: 1px solid white;
+  color: white;
+  background-color: black;
+  padding: 8px 20px;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.sbm{
+  width: 50%!important;
+  margin: auto!important;
+}
+

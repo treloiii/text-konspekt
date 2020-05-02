@@ -1,10 +1,11 @@
+<app-navbar></app-navbar>
 <div class="top">
   <div class="text-center center">
     <h1>Генератор рукописного текста</h1>
     <p>Загрузи текст. Выбери фон. Получи свой конспект.</p>
   </div>
   <div class="delimiter">
-    <img class="down-image" src="assets/down.png" (click)="scrollTo(target)">
+    <img [@pulse0]="anim" class="down-image" src="assets/down.png" (click)="scrollTo(target)">
     <img class="delimiter-img" src="assets/delim.png">
   </div>
 </div>

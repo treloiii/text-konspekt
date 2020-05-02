@@ -10,7 +10,8 @@
     <a class="nav-link" href="/generate">Генератор</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/login">Вход</a>
+    <a class="nav-link" href="/login" *ngIf="!login">Вход</a>
+    <a class="nav-link out" *ngIf="login" (click)="logout()">Выход</a>
   </li>
 </ul>
 <div class="underline"></div>

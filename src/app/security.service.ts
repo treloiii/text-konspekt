@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
   providedIn: 'root'
 })
 export class SecurityService {
-
+  public login:boolean=false;
   constructor(private http:HttpService,private router:Router) {
   }
   // access_token: "958949c8-d674-48db-8eb0-1ce5adcd2c5c"
@@ -17,10 +17,12 @@ export class SecurityService {
 
   public async saveAccessToken(data:FormData){
     return new Promise((resolved,rejected)=> {
-      this.http.getOAuth2Token(data).then(
+      this.http.getOAuth2Token(data).toPromise().then(
         (resolve: any) => {
           localStorage.setItem("access", resolve.access_token);
           localStorage.setItem("refresh", resolve.refresh_token);
+          this.login=true;
+          console.log(this.login)
           this.router.navigate(['/generate'])
           resolved(200)
         },
@@ -31,6 +33,14 @@ export class SecurityService {
           rejected(-1)
         });
     });
+  }
+  public refreshToken(){
+      let refresh=this.getRefresh();
+      let grant="refresh_token"
+      let data:FormData=new FormData();
+      data.append("grant_type",grant);
+      data.append("refresh_token",refresh);
+      return this.http.getOAuth2Token(data);
   }
 
   public getAccess(){
@@ -52,6 +62,7 @@ export class SecurityService {
   }
   public logout(){
     localStorage.clear();
+    this.login=false;
     this.router.navigate(['/login']);
   }
 }
