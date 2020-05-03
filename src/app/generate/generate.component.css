@@ -29,6 +29,21 @@ label{
   position: absolute;
   top: 50%;
 }
+.tips-block{
+  height: 43rem;
+}
+.tip-control{
+  color: black;
+  padding: .5rem;
+  background: white;
+  border: 1px solid;
+}
+.tip-control:hover{
+  color: white;
+  padding: .5rem;
+  background: black;
+  border: 1px solid;
+}
 .tool-btn{
   border: 1px solid;
   background: black;
@@ -39,10 +54,16 @@ label{
   text-align: center;
   font-size: 18px;
 }
+.callback{
+  margin: 8rem;
+}
 @media screen and (max-device-width: 480px) {
   .tool-btn{
     float: right;
     position: absolute;
+  }
+  .callback{
+    margin: 2rem;
   }
 }
 .btn {
