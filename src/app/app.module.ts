@@ -18,6 +18,8 @@ import {ApiInterceptor} from './api.interceptor';
 import {RefreshInterceptor} from './refresh.interceptor';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { FullexampleComponent } from './fullexample/fullexample.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -26,12 +28,14 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MainComponent,
     LoginComponent,
     SignupComponent,
-    GenerateComponent
+    GenerateComponent,
+    FullexampleComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MatButtonModule,
+    MatDialogModule,
     MatCardModule,
     MatSnackBarModule,
     MatGridListModule,

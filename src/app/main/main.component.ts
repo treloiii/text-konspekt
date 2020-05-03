@@ -1,5 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {bounceInDownOnEnterAnimation, pulseAnimation, pulseOnEnterAnimation, rubberBandAnimation} from 'angular-animations';
+import {FullexampleComponent} from '../fullexample/fullexample.component';
+import {MatDialog} from '@angular/material/dialog';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -16,7 +18,7 @@ export class MainComponent implements OnInit {
   images=["assets/gen1.jpg","assets/gen1.jpg","assets/gen1.jpg"]
   private screenHeight: number;
   private screenWidth: number;
-  constructor() {
+  constructor(public dialog: MatDialog) {
     this.onResize();
   }
 
@@ -39,6 +41,15 @@ export class MainComponent implements OnInit {
       this.rowHeight = "30rem";
     }
     console.log(this.screenWidth);
+  }
+
+
+  openImage(url:string){
+    const dialogRef = this.dialog.open(FullexampleComponent, {
+      width: '35rem',
+      height:'45rem',
+      data: {img:url}
+    });
   }
 
   scrollTo(el:HTMLElement) {

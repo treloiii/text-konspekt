@@ -17,8 +17,8 @@
     <mat-grid-list cols="3" [gutterSize]="gutterSize" [rowHeight]="rowHeight" style="margin-top: 4rem" *ngIf="!isMobile">
       <ng-container *ngFor="let image of images">
         <mat-grid-tile>
-          <div class="rama">
-            <img class="example" [src]="image">
+          <div class="rama zoom">
+            <img class="example" [src]="image" (click)="openImage(image)">
           </div>
         </mat-grid-tile>
       </ng-container>
