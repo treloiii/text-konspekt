@@ -17,11 +17,17 @@ export class RefreshInterceptor implements HttpInterceptor{
         catchError((e,c)=>{
           if(e instanceof HttpErrorResponse){
             if(e.status==401) {
-              this.security.logout();
-              return new Observable<HttpUserEvent<any>>()
+              console.log(e)
+              if(e.error.error_description=="No value present"){
+                return next.handle(req)
+              }
+              else{
+                this.security.logout();
+                return new Observable<HttpUserEvent<any>>()
+              }
             }
             else {
-              return c;
+              return next.handle(req);
             }
           }
         })

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {SecurityService} from '../security.service';
 import {HttpService} from '../http.service';
 import {NgForm} from '@angular/forms';
+import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-generate',
@@ -9,53 +10,61 @@ import {NgForm} from '@angular/forms';
   styleUrls: ['./generate.component.css']
 })
 export class GenerateComponent implements OnInit {
-  private user;
-  private labels=[
+  user;
+  labels=[
     {
       label:"Угол наклона текста",
       value:0,
       name:"angle",
-      type:"number"
+      type:"number",
+      tip:"Угол наклона текст, для выравнивания по клеткам."
     },
     {
       label:"Цвет текста",
-      value:"000255",
+      value:"#111c38",
       name:"color",
-      type:"text"
+      type:"color",
+      tip:"Цвет текста который будет на листе."
     },
     {
       label:"Смещение по оси Х",
       value:0,
       name:"deltaX",
-      type:"number"
+      type:"number",
+      tip:"Значение для смещения вправо от правого края листа."
     },
     {
       label:"Смещение по оси Y",
       value:80,
       name:"deltaY",
-      type:"number"
+      type:"number",
+      tip:"Отступ от верхнего края листа"
     },
     {
       label:"Размер шрифта",
       value:32,
       name:"fontSize",
-      type:"number"
+      type:"number",
+      tip:"Размер шрифта. Для каждого шрифта разный."
     },
     {
       label:"Междустрочный интервал",
       value:20,
       name:"interval",
-      type:"number"
+      type:"number",
+      tip:"Интервал между строками, чем больше значение тем интервал меньше"
     },
     {
       label:"Количество дополнительных строк",
       value:0,
       name:"additionLines",
-      type:"number"
+      type:"number",
+      tip:"Количество строк которые будут добавлены дополнительно к тексту на каждом листе"
     }
   ]
-  private result:any=[];
-  constructor(private security:SecurityService,private http:HttpService) {
+  result:any=[];
+  loading: boolean=false;
+  constructor(private security:SecurityService,private http:HttpService,private _snackBar: MatSnackBar) {
     this.security.checkAccess(true);
   }
 
@@ -71,12 +80,19 @@ export class GenerateComponent implements OnInit {
     this.user= await this.http.getUsername(localStorage.getItem("email"));
     console.log(this.user)
   }
+  private myAlert(text:string){
+    let config=new MatSnackBarConfig();
+    config.duration=2000;
+    config.verticalPosition="top";
+    config.panelClass="snack-back";
+    this._snackBar.open(text,"",config);
+  }
 
   async fontLoad(files:FileList) {
     let file=files.item(0);
     console.log(file)
     if(!file.name.endsWith(".ttf"))
-      alert("Поддерживаемый формат ttf")
+      this.myAlert("Поддерживаемый формат ttf")
     else{
       //...upload to server
       let data:FormData=new FormData();
@@ -84,9 +100,9 @@ export class GenerateComponent implements OnInit {
       data.append("id",this.user.id);
       let res=await this.http.uploadFont(data);
       if(res==="success")
-        alert("Шрифт успешно загружен")
+        this.myAlert("Шрифт успешно загружен")
       else
-        alert("Произошла ошибка")
+        this.myAlert("Произошла ошибка")
     }
   }
 
@@ -94,7 +110,7 @@ export class GenerateComponent implements OnInit {
     let file=files.item(0);
     console.log(file)
     if(!file.name.endsWith(".jpg")&&!file.name.endsWith(".jpeg"))
-      alert("Поддерживаемый формат jpg/jpeg")
+      this.myAlert("Поддерживаемый формат jpg/jpeg")
     else{
       //...upload to server
       let data:FormData=new FormData();
@@ -102,9 +118,9 @@ export class GenerateComponent implements OnInit {
       data.append("id",this.user.id);
       let res=await this.http.uploadBackground(data);
       if(res==="success")
-        alert("Задний фон успешно загружен")
+        this.myAlert("Задний фон успешно загружен")
       else
-        alert("Произошла ошибка")
+        this.myAlert("Произошла ошибка")
     }
   }
 
@@ -112,7 +128,7 @@ export class GenerateComponent implements OnInit {
     let file=files.item(0);
     console.log(file)
     if(!file.name.endsWith(".txt"))
-      alert("Поддерживаемый формат txt")
+      this.myAlert("Поддерживаемый формат txt")
     else{
       //...upload to server
       let data:FormData=new FormData();
@@ -120,24 +136,31 @@ export class GenerateComponent implements OnInit {
       data.append("id",this.user.id);
       let res=await this.http.uploadText(data);
       if(res==="success")
-        alert("Текст успешно загружен")
+        this.myAlert("Текст успешно загружен")
       else
-        alert("Произошла ошибка")
+        this.myAlert("Произошла ошибка")
     }
   }
 
   async generate(genForm: NgForm) {
+    this.result=[];
+    this.loading=true;
     console.log(genForm.form);
     let data:FormData=new FormData();
     this.labels.forEach((label)=>{
       data.append(label.name,genForm.value[label.name]);
     });
-    let res=await this.http.generate(data,this.user.id);
+    let res:any=await this.http.generate(data,this.user.id);
 
     // this.result=res;
     this.result=res?.map(url=>{
       return "http://"+url;
-    })
+    });
+    this.loading=false
     console.log(this.result);
+  }
+
+  checkval($event: Event) {
+    console.log($event);
   }
 }

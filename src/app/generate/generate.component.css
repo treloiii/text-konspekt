@@ -20,12 +20,39 @@ label{
   overflow: hidden;
   display: inline-block;
 }
-
+.bg{
+  border: 1px solid;
+  padding: 1rem;
+  margin: .5rem;
+}
+.sp{
+  position: absolute;
+  top: 50%;
+}
+.tool-btn{
+  border: 1px solid;
+  background: black;
+  color: white;
+  border-radius: 8rem;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  font-size: 18px;
+}
+@media screen and (max-device-width: 480px) {
+  .tool-btn{
+    float: right;
+    position: absolute;
+  }
+}
 .btn {
   border: 1px solid black;
   color: black;
   background-color: white;
   padding: 8px 20px;
+}
+.btn-back{
+  width: 100%;
 }
 .btn:hover {
   border: 1px solid white;

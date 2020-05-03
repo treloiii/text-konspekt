@@ -16,6 +16,8 @@ import {HttpClientModule,HTTP_INTERCEPTORS} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import {ApiInterceptor} from './api.interceptor';
 import {RefreshInterceptor} from './refresh.interceptor';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,12 @@ import {RefreshInterceptor} from './refresh.interceptor';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
+    MatSnackBarModule,
     MatGridListModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   providers: [
     {
