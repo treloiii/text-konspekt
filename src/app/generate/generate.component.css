@@ -4,6 +4,26 @@ input[type=number]::-webkit-inner-spin-button {
   padding-left: 1rem;
   padding-bottom: 1rem;
 }
+h1{
+  font-family: 'Caveat', cursive; 
+  font-size: 40px;
+}
+h2{
+  font-family: 'Caveat', cursive;
+  font-size: 36px;
+}
+p{
+  font-family:'Caveat', cursive; 
+  font-size: 26px; 
+}
+label{
+  font-family:'Caveat', cursive; 
+  font-size: 36px; 
+}
+.btn{
+  font-family:'Caveat', cursive; 
+  font-size: 20px; 
+}
 .fg{
   width: 50%;
   margin-left: 25%;
@@ -37,6 +57,9 @@ label{
   padding: .5rem;
   background: white;
   border: 1px solid;
+  border-radius: 6px;
+  font-family:'Caveat', cursive; 
+  font-size: 20px;
 }
 .tip-control:hover{
   color: white;

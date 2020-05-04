@@ -2,16 +2,26 @@
 <div class="top">
   <div class="text-center center">
     <h1>Генератор рукописного текста</h1>
-    <p>Загрузи текст. Выбери фон. Получи свой конспект.</p>
+    <p style = "font-family:'Caveat', cursive; font-size: 20px; color: #707070;">Загрузи текст. Выбери фон. Получи свой конспект.</p>
+    <button class="try-free-2">Попробуй бесплатно</button>
   </div>
   <div class="delimiter">
-    <img [@pulse0]="anim" class="down-image" src="assets/down.png" (click)="scrollTo(target)">
-    <img class="delimiter-img" src="assets/delim.png">
+    <!-- <img [@pulse0]="anim" class="down-image" src="assets/down.png" (click)="scrollTo(target)"> -->
+    <img class="delimiter-img" src="assets/delim2.png">
+    <div class="center-con" (click)="scrollTo(target)">
+      <div class="round">
+          <div id="cta">
+              <span class="arrow primera next "></span>
+              <span class="arrow segunda next "></span>
+          </div>
+      </div>
+  </div>
   </div>
 </div>
-<div #target style="height: 100%;background: black">
+<div #target style="height: 100%;background: #1d1d1d">
   <div class="bottom-content">
     <div>
+      <br>
       <h1>Примеры наших работ</h1>
     </div>
     <mat-grid-list cols="3" [gutterSize]="gutterSize" [rowHeight]="rowHeight" style="margin-top: 4rem" *ngIf="!isMobile">

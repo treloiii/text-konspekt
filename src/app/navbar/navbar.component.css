@@ -1,19 +1,44 @@
 a{
-  color: black;
-  font-size: 16px;
+  color: #1d1d1d;
+  font-size: 26px;
+  font-family:'Caveat', cursive;
+}
+a:hover{
+  color: #707070;
+  font-size: 26px;
+  font-family:'Caveat', cursive;
 }
 .underline{
-  border-bottom: 1px solid;
+  border-bottom: 2px solid;
   margin-left: 35%;
-  margin-top: 1%;
+  margin-top:-0.1%;
 }
 .out{
   cursor: pointer;
+}
+.logo{
+  position: absolute;
+  margin-left:34.9%;
+  margin-top:0.5rem;
+}
+.nav-link {
+  display: block;
+  padding: 1rem 2rem;
 }
 @media screen and (max-device-width: 480px) {
   .underline{
     border-bottom: 1px solid;
     margin-left: 15%;
     margin-top: 1%;
+  }
+  .logo{
+    margin-left: 15%;
+    margin-top: 0.7rem;
+  }
+  .nav-link{
+    padding:2rem 0.5rem 0rem;
+  }
+  .nav{
+    margin-left:10%;
   }
 }
