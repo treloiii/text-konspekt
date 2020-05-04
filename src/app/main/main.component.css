@@ -13,35 +13,97 @@
   transform: scale(1.3);
   transform-origin: 50% 50%;
 }
-
-
-
 .center{
-  padding: 10rem;
+  padding: 20rem 0rem 0rem;
   height: 50%;
 }
 .top{
-  height: 100%;
+  height: 86%;
 }
 .delimiter{
   /*background-image: url("src/assets/delim.png");*/
-  height: 50%;
+  height: 25vh;
+  margin-top:10rem;
   position: relative;
 }
 .delimiter-img{
   width: 100%;
-  height: 10rem;
+  height: 6rem;
   position: absolute;
-  bottom: -5px;
+  bottom: -5rem;
 }
-.down-image{
+/* .down-image{
   width: 50px;
   height: 50px;
   position: absolute;
   left: 50vw;
-  bottom: 25vh;
+  bottom: 10vh;
   cursor: pointer;
+} */
+/*  */
+.center-con {
+  display: flex;
+  height: 90%;
+  align-items: center;
+  justify-content: center;
 }
+
+.round {
+  position: absolute;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  
+}
+
+#cta{
+  width:100%; cursor: pointer; position: absolute;
+}
+
+#cta .arrow{left: 30%;}
+.arrow {position: absolute; bottom: 0;  margin-left:0px; width: 15px; height: 24px; background-size:contain; top:15px;}
+.segunda{margin-top: 24px;}
+.next {
+background-image: url(src/assets/drip1.png);
+}
+
+@keyframes bounceAlpha {
+0% {opacity: 1; transform: translateY(0px) scale(1);}
+25%{opacity: 0; transform:translateY(10px) scale(0.9);}
+26%{opacity: 0; transform:translateY(-10px) scale(0.9);}
+55% {opacity: 1; transform: translateY(0px) scale(1);}
+}
+
+.bounceAlpha {
+  animation-name: bounceAlpha;
+  animation-duration:1.4s;
+  animation-iteration-count:infinite;
+  animation-timing-function:linear;
+}
+
+.arrow.primera.bounceAlpha {
+  animation-name: bounceAlpha;
+  animation-duration:1.4s;
+  animation-delay:0.2s;
+  animation-iteration-count:infinite;
+  animation-timing-function:linear;
+}
+
+.round:hover .arrow{
+  animation-name: bounceAlpha;
+  animation-duration:1.4s;
+  animation-iteration-count:infinite;
+  animation-timing-function:linear;
+}
+.round:hover .arrow.primera{
+  animation-name: bounceAlpha;
+  animation-duration:1.4s;
+  animation-delay:0.2s;
+  animation-iteration-count:infinite;
+  animation-timing-function:linear;
+}
+/*  */
 .bottom-content{
   padding-top: 5rem;
   padding-right: 5rem;
@@ -58,26 +120,53 @@
   cursor: pointer;
 }
 .rama{
-  padding: 1rem;
-  border: 0.1rem solid white;
+  padding: 0.2rem;
+  border: 1px solid white;
   height: 100%;
 }
 .try-free{
   margin-top: 5rem;
   color: white;
-  background: black;
+  background: #1d1d1d;
   padding: 1rem;
+  border: 1px solid white;
+  font-family:'Caveat', cursive;
+  font-size: 20px;
 }
 .try-free:hover{
   margin-top: 5rem;
-  color: black;
+  color: #1d1d1d;
   background: white;
   padding: 1rem;
+}
+.try-free-2{
+  margin-top: 5rem;
+  color: #1d1d1d;
+  background: #ffffff;
+  padding: 1rem;
+  border: 1px solid #1d1d1d;
+  font-family:'Caveat', cursive;
+  font-size: 20px;
+}
+.try-free-2:hover{
+  margin-top: 5rem;
+  color: white;
+  background: #1d1d1d;
+  padding: 1rem;
+}
+h1{
+  font-family: 'Caveat', cursive; 
+  font-size: 46px;
+}
+p{
+  font-family:'Caveat', cursive; 
+  font-size: 20px; 
+  color: #707070;
 }
 /*Тут для мобилки все стили*/
 @media screen and (max-device-width: 480px) {
   .top{
-    height: 95%;
+    height: 88%;
   }
   .center{
     padding: 5rem;
@@ -85,14 +174,15 @@
   }
   .delimiter{
     /*background-image: url("src/assets/delim.png");*/
-    height: 50%;
+    height: 25vh;
+    margin-top:11rem;
     position: relative;
   }
   .delimiter-img{
-    width: 100%;
-    height: 5rem;
-    position: absolute;
-    bottom: -5px;
+    width: 200%;
+  height: 3rem;
+  position: absolute;
+  bottom: -2rem;
   }
   .down-image{
     width: 25px;
@@ -117,14 +207,14 @@
     width: 100%;
   }
   .rama{
-    padding: 1rem;
-    border: 0.1rem solid white;
+    padding: 0.1rem;
+    border: 1rem solid white;
     height: 100%;
   }
   .try-free{
     margin-top: 5rem;
     color: white;
-    background: black;
+    background: #1d1d1d;
     padding: 1rem;
   }
 }
