@@ -9,3 +9,7 @@ body {
   background: black;
   color: white;
 }
+.snack-back-err{
+  background: darkred;
+  color: white;
+}

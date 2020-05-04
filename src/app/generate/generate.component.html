@@ -8,8 +8,10 @@
         <p>Ваш шрифт</p>
         <div class="form-group sm-1 mb-2">
           <div class="upload-btn-wrapper">
-            <button class="btn">Загрузить шрифт</button>
-            <input ngModel type="file" name="font" (change)="fontLoad($event.target.files)" />
+            <button class="btn" (click)="btn()">
+              <input ngModel type="file" name="font" (change)="fontLoad($event.target.files)" />
+              Загрузить шрифт
+            </button>
           </div>
         </div>
       </form>
@@ -19,8 +21,10 @@
         <p>Ваш задний фон</p>
         <div class="form-group sm-1 mb-2">
           <div class="upload-btn-wrapper">
-            <button class="btn btn-back">Загрузить задний фон</button>
-            <input type="file" name="back" (change)="backLoad($event.target.files)" />
+            <button class="btn btn-back">
+              <input type="file" name="back" (change)="backLoad($event.target.files)" />
+              Загрузить задний фон
+            </button>
           </div>
         </div>
       </form>
@@ -30,8 +34,10 @@
         <p>Ваш текст</p>
         <div class="form-group sm-1 mb-2">
           <div class="upload-btn-wrapper">
-            <button class="btn">Загрузить текст</button>
-            <input type="file" name="text" (change)="textLoad($event.target.files)" />
+            <button class="btn">
+              <input type="file" name="text" (change)="textLoad($event.target.files)" />
+              Загрузить текст
+            </button>
           </div>
         </div>
       </form>

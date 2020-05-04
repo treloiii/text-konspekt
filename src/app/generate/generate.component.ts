@@ -80,11 +80,14 @@ export class GenerateComponent implements OnInit {
     this.user= await this.http.getUsername(localStorage.getItem("email"));
     console.log(this.user)
   }
-  private myAlert(text:string){
+  private myAlert(text:string,err:boolean=false){
     let config=new MatSnackBarConfig();
     config.duration=2000;
     config.verticalPosition="top";
-    config.panelClass="snack-back";
+    if(err)
+      config.panelClass="snack-back-err";
+    else
+      config.panelClass="snack-back";
     this._snackBar.open(text,"",config);
   }
 
@@ -92,7 +95,7 @@ export class GenerateComponent implements OnInit {
     let file=files.item(0);
     console.log(file)
     if(!file.name.endsWith(".ttf"))
-      this.myAlert("Поддерживаемый формат ttf")
+      this.myAlert("Поддерживаемый формат ttf",true)
     else{
       //...upload to server
       let data:FormData=new FormData();
@@ -102,7 +105,7 @@ export class GenerateComponent implements OnInit {
       if(res==="success")
         this.myAlert("Шрифт успешно загружен")
       else
-        this.myAlert("Произошла ошибка")
+        this.myAlert("Произошла ошибка",true)
     }
   }
 
@@ -110,7 +113,7 @@ export class GenerateComponent implements OnInit {
     let file=files.item(0);
     console.log(file)
     if(!file.name.endsWith(".jpg")&&!file.name.endsWith(".jpeg"))
-      this.myAlert("Поддерживаемый формат jpg/jpeg")
+      this.myAlert("Поддерживаемый формат jpg/jpeg",true)
     else{
       //...upload to server
       let data:FormData=new FormData();
@@ -120,7 +123,7 @@ export class GenerateComponent implements OnInit {
       if(res==="success")
         this.myAlert("Задний фон успешно загружен")
       else
-        this.myAlert("Произошла ошибка")
+        this.myAlert("Произошла ошибка",true)
     }
   }
 
@@ -128,7 +131,7 @@ export class GenerateComponent implements OnInit {
     let file=files.item(0);
     console.log(file)
     if(!file.name.endsWith(".txt"))
-      this.myAlert("Поддерживаемый формат txt")
+      this.myAlert("Поддерживаемый формат txt",true)
     else{
       //...upload to server
       let data:FormData=new FormData();
@@ -138,7 +141,7 @@ export class GenerateComponent implements OnInit {
       if(res==="success")
         this.myAlert("Текст успешно загружен")
       else
-        this.myAlert("Произошла ошибка")
+        this.myAlert("Произошла ошибка",true)
     }
   }
 
@@ -150,17 +153,28 @@ export class GenerateComponent implements OnInit {
     this.labels.forEach((label)=>{
       data.append(label.name,genForm.value[label.name]);
     });
-    let res:any=await this.http.generate(data,this.user.id);
+    try {
+      let res: any = await this.http.generate(data, this.user.id);
 
-    // this.result=res;
-    this.result=res?.map(url=>{
-      return "http://"+url;
-    });
-    this.loading=false
-    console.log(this.result);
+      // this.result=res;
+      this.result = res?.map(url => {
+        return "http://" + url;
+      });
+      this.loading = false
+      console.log(this.result);
+    }
+    catch (e){
+      if(e.error=="no text")
+        this.myAlert("Вы не загрузили текс!",true)
+      this.loading=false;
+    }
   }
 
   checkval($event: Event) {
     console.log($event);
+  }
+
+  btn() {
+    console.log("button")
   }
 }
