@@ -28,6 +28,13 @@ label{
   width: 50%;
   margin-left: 25%;
 }
+.fonts{
+  font-size: 32px;
+  text-align: center;
+}
+select[multiple]:focus option:checked {
+  background: red linear-gradient(0deg, black 0%, black 100%);
+}
 .center{
   margin: 0 auto;
   width: 50%;

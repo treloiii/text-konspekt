@@ -5,33 +5,39 @@
   <div class="row">
     <div class="col-lg">
       <form #fontForm="ngForm">
-        <p>Ваш шрифт</p>
+        <p>Ваш шрифт: <span style="font-weight: bolder">{{font}}</span></p>
         <div class="form-group sm-1 mb-2">
           <div class="upload-btn-wrapper">
-            <button class="btn">Загрузить шрифт</button>
-            <input ngModel type="file" name="font" (change)="fontLoad($event.target.files)" />
+            <button class="btn">
+              <input ngModel type="file" name="font" (change)="fontLoad($event.target.files)" />
+              Загрузить шрифт
+            </button>
           </div>
         </div>
       </form>
     </div>
     <div class="col-lg">
       <form>
-        <p>Ваш задний фон</p>
+        <p>Ваш задний фон: <span style="font-weight: bolder">{{background}}</span></p>
         <div class="form-group sm-1 mb-2">
           <div class="upload-btn-wrapper">
-            <button class="btn btn-back">Загрузить задний фон</button>
-            <input type="file" name="back" (change)="backLoad($event.target.files)" />
+            <button class="btn btn-back">
+              <input type="file" name="back" (change)="backLoad($event.target.files)" />
+              Загрузить задний фон
+            </button>
           </div>
         </div>
       </form>
     </div>
     <div class="col-lg">
       <form>
-        <p>Ваш текст</p>
+        <p>Загрузите текст</p>
         <div class="form-group sm-1 mb-2">
           <div class="upload-btn-wrapper">
-            <button class="btn">Загрузить текст</button>
-            <input type="file" name="text" (change)="textLoad($event.target.files)" />
+            <button class="btn">
+              <input type="file" name="text" (change)="textLoad($event.target.files)" />
+              Загрузить текст
+            </button>
           </div>
         </div>
       </form>
@@ -59,6 +65,16 @@
             <div class="col-lg bg">
               <h2>Выставляй настройки</h2>
               <form #genForm="ngForm">
+                <div class="form-group sm-1 mb-2">
+                  <label for="exampleFormControlSelect1">Стандартный шрифт</label>
+                  <select ngModel name="font" multiple class="form-control" id="exampleFormControlSelect1">
+                    <option style="font-family: FirstEx;" class="fonts">Пример шрифта#1</option>
+                    <option style="font-family: SecondEx;" class="fonts">Пример шрифта#2</option>
+                    <option style="font-family: ThirdEx;" class="fonts">Пример шрифта#3</option>
+                    <option style="font-family: FourthEx;" class="fonts">Пример шрифта#4</option>
+                    <option style="font-family: FiveEx;" class="fonts">Пример шрифта#5</option>
+                  </select>
+                </div>
                 <div class="form-group sm-1 mb-2 fg" *ngFor="let group of labels">
                   <label>{{group.label}}</label>
                   <div class="container">
@@ -75,6 +91,7 @@
                   </div>
                 </div>
                 <button class="btn btn-lg btn-primary btn-block sbm" type="submit" (click)="generate(genForm)">Создать</button>
+                <button class="btn mt-2" (click)="save(genForm)">Сохранить настройки</button>
               </form>
             </div>
             <div class="col-lg bg">

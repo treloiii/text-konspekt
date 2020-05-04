@@ -9,3 +9,27 @@ body {
   background: black;
   color: white;
 }
+.snack-back-err{
+  background: darkred;
+  color: white;
+}
+@font-face {
+  font-family: 'FirstEx'; /*a name to be used later*/
+  src: url('assets/first.ttf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'SecondEx'; /*a name to be used later*/
+  src: url('assets/second.ttf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'ThirdEx'; /*a name to be used later*/
+  src: url('assets/third.ttf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'FourthEx'; /*a name to be used later*/
+  src: url('assets/fourth.ttf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'FiveEx'; /*a name to be used later*/
+  src: url('assets/five.ttf'); /*URL to font*/
+}

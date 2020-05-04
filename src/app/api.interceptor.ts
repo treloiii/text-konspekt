@@ -1,5 +1,5 @@
 import {HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse} from '@angular/common/http';
-import {from, Observable} from 'rxjs';
+import {from, Observable, throwError} from 'rxjs';
 import {SecurityService} from './security.service';
 import {Injectable} from '@angular/core';
 import {filter, tap, catchError, flatMap, switchMap} from 'rxjs/operators';
@@ -34,7 +34,7 @@ export class ApiInterceptor implements HttpInterceptor{
                   })
                 );
               }else{
-                console.log("logout need")
+                return throwError(err);
               }
             }
             else{

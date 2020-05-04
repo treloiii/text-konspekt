@@ -19,10 +19,10 @@ export class HttpService {
   // private registerURL:string="/register/";
   // private baseURL:string="/api";
   // private uploadURL:string="/attach";
-  // private tokenURL:string="http://localhost:8080/oauth/token";
-  // private registerURL:string="http://localhost:8080/register/";
-  // private baseURL:string="http://localhost:8080/api";
-  // private uploadURL:string="http://localhost:8080/attach";
+  // private tokenURL:string="http://localhost:8090/oauth/token";
+  // private registerURL:string="http://localhost:8090/register/";
+  // private baseURL:string="http://localhost:8090/api";
+  // private uploadURL:string="http://localhost:8090/attach";
   private tokenURL:string="http://trelloiii.site/oauth/token";
   private registerURL:string="http://trelloiii.site/register/";
   private baseURL:string="http://trelloiii.site/api";
@@ -52,5 +52,8 @@ export class HttpService {
   }
   public generate(data,id:number){
     return this.http.post(this.baseURL+`/create/${id}`,data).toPromise();
+  }
+  public saveSettings(data,id:number){
+    return this.http.post(`${this.baseURL}/settings/${id}`,data,{responseType:"text"}).toPromise();
   }
 }
