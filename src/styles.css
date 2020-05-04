@@ -13,3 +13,11 @@ body {
   background: darkred;
   color: white;
 }
+@font-face {
+  font-family: 'FirstEx'; /*a name to be used later*/
+  src: url('assets/first.ttf'); /*URL to font*/
+}
+@font-face {
+  font-family: 'SecondEx'; /*a name to be used later*/
+  src: url('assets/second.ttf'); /*URL to font*/
+}

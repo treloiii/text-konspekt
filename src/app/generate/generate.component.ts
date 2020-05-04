@@ -3,6 +3,7 @@ import {SecurityService} from '../security.service';
 import {HttpService} from '../http.service';
 import {NgForm} from '@angular/forms';
 import {MatSnackBar, MatSnackBarConfig} from '@angular/material/snack-bar';
+import {of} from 'rxjs';
 
 @Component({
   selector: 'app-generate',
@@ -64,6 +65,8 @@ export class GenerateComponent implements OnInit {
   ]
   result:any=[];
   loading: boolean=false;
+  font: any;
+  background:any
   constructor(private security:SecurityService,private http:HttpService,private _snackBar: MatSnackBar) {
     this.security.checkAccess(true);
   }
@@ -78,7 +81,18 @@ export class GenerateComponent implements OnInit {
   }
   async getUser(){
     this.user= await this.http.getUsername(localStorage.getItem("email"));
-    console.log(this.user)
+    if(this.user.settings.font==null)
+      this.font="Не загружен"
+    else
+      this.font="Загружен"
+    if(this.user.settings.background==null)
+      this.background="Не загружен"
+    else
+      this.background="Загружен"
+    console.log(this.user);
+    for(let label of this.labels){
+      label.value=this.user.settings[label.name];
+    }
   }
   private myAlert(text:string,err:boolean=false){
     let config=new MatSnackBarConfig();
@@ -102,8 +116,10 @@ export class GenerateComponent implements OnInit {
       data.append("file",file);
       data.append("id",this.user.id);
       let res=await this.http.uploadFont(data);
-      if(res==="success")
-        this.myAlert("Шрифт успешно загружен")
+      if(res==="success") {
+        this.myAlert("Шрифт успешно загружен");
+        this.font = "Загружен";
+      }
       else
         this.myAlert("Произошла ошибка",true)
     }
@@ -120,8 +136,10 @@ export class GenerateComponent implements OnInit {
       data.append("file",file);
       data.append("id",this.user.id);
       let res=await this.http.uploadBackground(data);
-      if(res==="success")
-        this.myAlert("Задний фон успешно загружен")
+      if(res==="success") {
+        this.myAlert("Задний фон успешно загружен");
+        this.background="Загружен";
+      }
       else
         this.myAlert("Произошла ошибка",true)
     }
@@ -153,6 +171,9 @@ export class GenerateComponent implements OnInit {
     this.labels.forEach((label)=>{
       data.append(label.name,genForm.value[label.name]);
     });
+    let font=genForm.value["font"]
+    if(font!=="")
+      data.append("font",font)
     try {
       let res: any = await this.http.generate(data, this.user.id);
 
@@ -176,5 +197,16 @@ export class GenerateComponent implements OnInit {
 
   btn() {
     console.log("button")
+  }
+
+  save(genForm: NgForm) {
+    let setting={};
+    this.labels.forEach((label)=>{
+      setting[label.name]=genForm.form.value[label.name];
+    });
+    this.http.saveSettings(setting,this.user.id).then(
+      resolve=>{console.log(resolve)},
+      reject=>{console.log(reject)}
+    );
   }
 }

@@ -53,4 +53,7 @@ export class HttpService {
   public generate(data,id:number){
     return this.http.post(this.baseURL+`/create/${id}`,data).toPromise();
   }
+  public saveSettings(data,id:number){
+    return this.http.post(`${this.baseURL}/settings/${id}`,data,{responseType:"text"}).toPromise();
+  }
 }
