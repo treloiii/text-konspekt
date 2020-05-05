@@ -74,6 +74,23 @@ label{
   background: black;
   border: 1px solid;
 }
+.form-control{
+  font-family:'Caveat', cursive; 
+  font-size: 20px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 3px solid #1d1d1d;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+.form-control:focus{
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+ border: 3px solid #ccc;;
+}
+.btn:focus{
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
 .tool-btn{
   border: 1px solid;
   background: black;
