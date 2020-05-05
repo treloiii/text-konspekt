@@ -23,6 +23,10 @@ button:hover{
   color: black;
   border: 0.5px solid black;
 }
+
+.btn:focus{
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
 .form-signin {
   width: 100%;
   max-width: 330px;
@@ -37,11 +41,19 @@ button:hover{
   position: relative;
   box-sizing: border-box;
   height: auto;
-  padding: 10px;
-  font-size: 16px;
+  font-size: 20px;
+  border: 3px solid #1d1d1d;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+.form-signin .form-control:focus{
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+ border: 3px solid #ccc;
 }
 input{
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
+  font-family:'Caveat', cursive; 
 }
 .success{
   font-size: 22px;
@@ -51,4 +63,25 @@ input{
 .err{
   font-size: 16px;
   color: darkred;
+}
+h1{
+  font-family: 'Caveat', cursive; 
+  font-size: 30px;
+}
+p{
+  font-family:'Caveat', cursive; 
+  font-size: 20px; 
+  color: #707070;
+}
+.btn{
+  color: white;
+  background: #1d1d1d;
+  border: 1px solid #1d1d1d;
+  font-family:'Caveat', cursive;
+  font-size: 20px;
+}
+a{
+  font-family:'Caveat', cursive; 
+  font-size: 20px; 
+  color: #000000;
 }
