@@ -24,9 +24,61 @@ a:hover{
   display: block;
   padding: 1rem 2rem;
 }
+/* Тут для пк низкого разрешения */
+@media screen and (max-device-width: 860px){
+  .underline{
+    border-bottom: 2px solid #1d1d1d;
+    margin-left: 15%;
+    margin-top: 1%;
+  }
+  .logo{
+    margin-left: 15%;
+    margin-top: 1rem;
+  }
+  .nav-link{
+    padding:2rem 1rem 0rem;
+  }
+  .nav{
+    margin-left:0;
+  }
+}
+@media screen and (max-device-width: 1024px){
+  .underline{
+    border-bottom: 2px solid #1d1d1d;
+    margin-left: 15%;
+    margin-top: 1%;
+  }
+  .logo{
+    margin-left: 15%;
+    margin-top: 1rem;
+  }
+  .nav-link{
+    padding:2rem 1rem 0rem;
+  }
+  .nav{
+    margin-left:0;
+  }
+}
+@media screen and (max-device-width: 1366px){
+  .logo{
+    margin-left: 20%;
+    margin-top: 0.5rem;
+  }
+  .underline{
+    border-bottom: 2px solid #1d1d1d;
+    margin-left: 20%;
+    margin-top: 1%;
+  }
+  .nav-link{
+    padding:1rem 1rem 0rem;
+  }
+  .nav{
+    margin-left:0;
+  }
+}
 @media screen and (max-device-width: 480px) {
   .underline{
-    border-bottom: 1px solid;
+    border-bottom: 2px solid #1d1d1d;
     margin-left: 15%;
     margin-top: 1%;
   }
@@ -38,6 +90,23 @@ a:hover{
     padding:2rem 0.5rem 0rem;
   }
   .nav{
-    margin-left:10%;
+    margin-left:20%;
+  }
+}
+@media screen and (max-device-width: 320px){
+  .underline{
+    border-bottom: 2px solid #1d1d1d;
+    margin-left: 15%;
+    margin-top: 1%;
+  }
+  .logo{
+    margin-left: 15%;
+    margin-top: 0.7rem;
+  }
+  .nav-link{
+    padding:2rem 0.2rem 0rem;
+  }
+  .nav{
+    margin-left:22%;
   }
 }
